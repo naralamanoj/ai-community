@@ -1,20 +1,11 @@
 {
     "version": 2,
-    "framework": null,
-    "builds": [
+    "public": true,
+    "cleanUrls": true,
+    "rewrites": [
         {
-            "src": "package.json",
-            "use": "@vercel/static-build"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/_/@tanstack/react-start/(.*)",
-            "dest": "/_/@tanstack/react-start/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/"
+            "source": "/(.*)",
+            "destination": "/.output/server/index.mjs"
         }
     ]
 }
