@@ -67,11 +67,12 @@
     "three": "^0.184.0",
     "tw-animate-css": "^1.3.4",
     "vaul": "^1.1.2",
+    "vinxi": "^0.5.11",
     "vite-tsconfig-paths": "^6.0.2",
     "zod": "^3.24.2",
     "zustand": "^5.0.13",
-    "cross-env": "^10.1.0",
-    "nitro": "3.0.260429-beta"
+    "nitro": "3.0.260429-beta",
+    "cross-env": "^10.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
