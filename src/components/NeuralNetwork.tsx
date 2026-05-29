@@ -1,12 +1,15 @@
 import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useAppStore } from "@/lib/store";
 
 function Nodes() {
   const ref = useRef<THREE.Points>(null);
   const lineRef = useRef<THREE.LineSegments>(null);
+  const { user, showWebsite } = useAppStore();
 
   const { positions, linePositions } = useMemo(() => {
+    // ... existing initialization logic
     const count = 120;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -31,6 +34,9 @@ function Nodes() {
   }, []);
 
   useFrame(({ clock }) => {
+    // If user is in dashboard or potentially interacting with login, slowdown/pause
+    if (user || !showWebsite) return;
+
     const t = clock.getElapsedTime() * 0.08;
     if (ref.current) ref.current.rotation.y = t;
     if (lineRef.current) lineRef.current.rotation.y = t;
