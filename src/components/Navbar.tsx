@@ -15,11 +15,9 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 24, mass: 0.2 });
+  const { siteContent, user, login, logout, showLogin, setShowLogin, showJoin, setShowJoin } = useAppStore();
   const [open, setOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [showJoin, setShowJoin] = useState(false);
   const clicks = useRef<number[]>([]);
-  const { siteContent, user, login, logout } = useAppStore();
 
   const handleLogoClick = () => {
     const now = Date.now();

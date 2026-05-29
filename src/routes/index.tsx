@@ -55,8 +55,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { user, showWebsite } = useAppStore();
+  const { user, showWebsite, showLogin, showJoin } = useAppStore();
   const isDashboard = user && !showWebsite;
+  const showBackground = !isDashboard && !showLogin && !showJoin;
   const [feedOpen, setFeedOpen] = useState(false);
 
   const dashFor = (role: string) => {
@@ -70,9 +71,11 @@ function Home() {
 
   return (
     <div className="relative bg-black text-white min-h-screen">
-      <Suspense fallback={null}>
-        <NeuralNetwork />
-      </Suspense>
+      {showBackground && (
+        <Suspense fallback={null}>
+          <NeuralNetwork />
+        </Suspense>
+      )}
 
       {isDashboard ? (
         <motion.div

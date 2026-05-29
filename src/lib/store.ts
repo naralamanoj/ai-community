@@ -112,9 +112,13 @@ interface AppState {
   feed: FeedItem[];
   audit: AuditEntry[];
   showWebsite: boolean;
+  showLogin: boolean;
+  showJoin: boolean;
   adminAllowList: string[];
 
   setShowWebsite: (show: boolean) => void;
+  setShowLogin: (show: boolean) => void;
+  setShowJoin: (show: boolean) => void;
   login: (username: string, password: string) => { ok: boolean; error?: string };
   logout: () => void;
   submitRequest: (type: string, data: any) => Promise<void>;
@@ -154,9 +158,13 @@ export const useAppStore = create<AppState>()(
       feed: SEED_FEED,
       audit: [],
       showWebsite: true,
+      showLogin: false,
+      showJoin: false,
       adminAllowList: ["MANOJ"],
 
       setShowWebsite: (show) => set({ showWebsite: show }),
+      setShowLogin: (show) => set({ showLogin: show }),
+      setShowJoin: (show) => set({ showJoin: show }),
 
       login: (username, password) => {
         const u = username.trim().toUpperCase();
