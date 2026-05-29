@@ -75,12 +75,21 @@ export default function Navbar() {
                 </button>
               </>
             ) : (
-              <button
-                onClick={() => setShowJoin(true)}
-                className="text-xs font-medium px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90"
-              >
-                Join Community
-              </button>
+              <>
+                <button
+                  onClick={() => setShowLogin(true)}
+                  className="text-xs font-medium px-4 py-2 rounded-full border border-white/10 hover:bg-white/5 transition-all flex items-center gap-2"
+                >
+                  <ShieldCheck className="w-3 h-3 text-primary" />
+                  Console
+                </button>
+                <button
+                  onClick={() => setShowJoin(true)}
+                  className="text-xs font-medium px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90"
+                >
+                  Join Community
+                </button>
+              </>
             )}
           </div>
 
@@ -108,15 +117,32 @@ export default function Navbar() {
                     Sign out
                   </button>
                 ) : (
-                  <button onClick={() => { setShowJoin(true); setOpen(false); }} className="text-xs text-left text-primary">
-                    Join Community
-                  </button>
+                  <>
+                    <button
+                      onClick={() => {
+                        setShowLogin(true);
+                        setOpen(false);
+                      }}
+                      className="text-xs text-left text-white/60"
+                    >
+                      Console
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowJoin(true);
+                        setOpen(false);
+                      }}
+                      className="text-xs text-left text-primary"
+                    >
+                      Join Community
+                    </button>
+                  </>
                 )}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </header>
+      </header >
 
       <LoginModal open={showLogin} onClose={() => setShowLogin(false)} onSubmit={login} />
       <JoinCommunityModal open={showJoin} onClose={() => setShowJoin(false)} />

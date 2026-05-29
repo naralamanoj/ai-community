@@ -338,6 +338,8 @@ export const useAppStore = create<AppState>()(
     {
       name: "ai-community-store",
       partialize: (s) => ({
+        user: s.user,
+        showWebsite: s.showWebsite,
         siteContent: s.siteContent,
         coordinators: s.coordinators,
         users: s.users,
